@@ -1,0 +1,70 @@
+@import '../scss/index';
+.logo {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.header {
+  @include flex(center);
+
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transform: height 0.3s ease, background-color 0.3 ease;
+  &.shrink {
+    height: $header-shrink-height;
+    background-color: $body-bg;
+  }
+  &__wrap {
+    @include flex(center);
+    width: 100%;
+    padding: 0.2rem;
+    @include mobile {
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+  &__nav {
+    @include flex();
+    & > * {
+      margin-left: 2rem;
+      @include mobile {
+        margin-left: 0;
+      }
+    }
+    @include mobile {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 2rem;
+      background: $body-bg;
+      box-shadow: $box-shadow;
+    }
+  }
+  li {
+    padding: 0 5px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: $main-color;
+      width: 0;
+      height: 2px;
+      bottom: -0.5rem;
+      left: 0;
+      transform: translateX(-50%);
+      transition: width 0.5s ease-out;
+      left: 50%;
+    }
+    &:hover::after,
+    &.active::after {
+      width: 100%;
+    }
+  }
+}
