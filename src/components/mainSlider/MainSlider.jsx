@@ -8,13 +8,15 @@ export default function MainSlider() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-   // const movies = tmdbApi.getMovieList('upcoming', { page: 1 });
+    const movies = async () => {
+      const params = { page: 1 };
+      try {
+        const response = await tmdbApi.getMovieList('upcoming', { page: 1 });
+        console.log(response);
+      } catch (err) {}
+    };
+    movies();
   }, []);
-
-  const getMovies = () => {
-    try {
-    } catch (err) {}
-  };
 
   return <div>MainSlider</div>;
 }
