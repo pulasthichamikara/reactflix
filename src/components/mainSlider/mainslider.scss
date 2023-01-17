@@ -1,0 +1,65 @@
+@import '../../scss/index';
+.hero-slider {
+  &__item {
+    background-size: cover !important;
+    background-position: center center !important  ;
+    height: 75vh;
+    min-height: 700px;
+    width: 100%;
+    @include mobile {
+      min-height: 150px;
+      height: 50vh;
+    }
+    &__content {
+      height: 100%;
+      @include flex(center center);
+    }
+    &__info {
+      @include flex(center);
+
+      flex: 1;
+      @include mobile {
+        flex-direction: column;
+        margin-top: 10rem;
+      }
+      gap: 2rem;
+      .overvie {
+        margin: 2rem 0;
+        font-size: 1.2rem;
+        line-height: 2.3rem;
+        letter-spacing: 0.1em;
+        height: 190px;
+        padding-right: 1rem;
+        @include mobile {
+          height: auto;
+        }
+        @include scrollbars(4px, $main-color, $body-bg);
+        display: block;
+        overflow-y: auto;
+      }
+      &__left {
+        flex: 3;
+      }
+      &__right {
+        flex: 2;
+        @include flex(top, right);
+        img {
+          width: 280px;
+          transform: scale(0);
+          transition: all 0.5s;
+          border-radius: $border-radius;
+
+          @include mobile {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.swiper-slide-active {
+  .hero-slider__item__info__right img {
+    transform: scale(1);
+  }
+}

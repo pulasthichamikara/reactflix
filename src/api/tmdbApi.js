@@ -23,17 +23,7 @@ export const tvType = {
 const tmdbApi = {
   getMovieList: (type, params) => {
     const url = 'movie/' + movieType[type];
-    //console.log(url);
-    //return axiosClient.get(url, params);
-    const testAxi = axios.create({
-      baseURL: apiConfig.baseUrl,
-      headers: {
-        'content-type': 'application.json',
-      },
-      paramsSerializer: (params) =>
-        queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
-    });
-    testAxi.get(url, params);
+    return axiosClient.get(url, params);
   },
   getTvList: (type, params) => {
     const url = 'tv/' + tvType[type];

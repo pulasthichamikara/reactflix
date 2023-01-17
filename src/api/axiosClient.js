@@ -4,17 +4,24 @@ import { apiConfig } from './apiConfig';
 
 const axiosClient = axios.create({
   baseURL: apiConfig.baseUrl,
+});
 
-  paramsSerializer: (params) =>
-    queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
+axiosClient.interceptors.request.use((config) => {
+  config.params = {
+    ...config.params,
+    api_key: apiConfig.apiKey,
+  };
+  config.paramsSerializer = (params) => queryString.stringify(params);
+  return config;
 });
 
 axiosClient.interceptors.response.use(
   (response) => {
     if (response && response.data) {
+      // console.log('res', response.data);
       return response.data;
     }
-    return response;
+    // return response;
   },
   (error) => {
     throw error;
