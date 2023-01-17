@@ -9,6 +9,8 @@
 
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
+  @include scrollbars(4px, $main-color, #000);
   @include tablet {
     font-size: 80%;
   }
@@ -36,6 +38,22 @@ a {
   }
 }
 
+h1 {
+  font-size: $h1-size;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: $h2-size;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: $h3-size;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 button,
 input {
   outline: 0;
@@ -55,6 +73,7 @@ iframe {
 .container {
   max-width: 1660px;
   margin: auto;
+  padding: 0 2rem;
 }
 
 .mb-3 {
