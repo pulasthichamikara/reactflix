@@ -1,0 +1,22 @@
+@import '../../scss/index';
+.movielist {
+  margin: 4rem 0;
+  &__item {
+    width: 250px;
+    p {
+      text-align: center;
+    }
+    img {
+      width: 100%;
+      border-radius: $border-radius;
+      border: 4px solid transparent;
+
+      transition: border-color 0.2s ease-in;
+    }
+    &:hover {
+      img {
+        border: 4px solid $main-color;
+      }
+    }
+  }
+}

@@ -5,9 +5,9 @@ import tmdbApi from '../../api/tmdbApi';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
 import './mainslider.scss';
+import '../button/button.scss';
 import { apiConfig } from '../../api/apiConfig';
 import { Autoplay } from 'swiper';
-import '../button/button.scss';
 
 export default function MainSlider() {
   const [movies, setMovies] = useState([]);
@@ -18,7 +18,6 @@ export default function MainSlider() {
         const params = { page: 1 };
         const response = await tmdbApi.getMovieList('upcoming', params);
         setMovies(response.results.slice(0, 10));
-        console.log(response.results.slice(0, 10));
       } catch (err) {
         console.log(err);
       }
@@ -60,6 +59,7 @@ export default function MainSlider() {
         slidesPerView={1}
         modules={[Autoplay]}
         grabCursor={true}
+        spaceBetween={0}
         autoplay={{ delay: 5000 }}
       >
         {movies.length &&
