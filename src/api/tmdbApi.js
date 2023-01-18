@@ -50,6 +50,10 @@ const tmdbApi = {
     const url = 'movie/' + id + '/videos';
     return axiosClient.get(url);
   },
+  similar: (id) => {
+    const url = 'movie/' + id + '/similar';
+    return axiosClient.get(url);
+  },
 };
 
 export default tmdbApi;

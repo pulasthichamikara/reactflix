@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { apiConfig } from '../../api/apiConfig';
 import tmdbApi from '../../api/tmdbApi';
 import Cast from '../../components/cast/Cast';
+import SimilarMovies from '../../components/similarMovies/SimilarMovies';
+
 import Videos from '../../components/videos/Videos';
 
 import './detail.scss';
@@ -27,8 +29,12 @@ export default function Detail() {
     }, 1000);
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div>
+    <div style={{ minHeight: '100vh' }}>
       <div className={activeHeader ? 'detail_active' : ''}>
         {movie && movie.id && (
           <div
@@ -60,6 +66,7 @@ export default function Detail() {
       {/* cast */}
       {movie && movie.id && <Cast id={movie.id} />}
       {movie && movie.id && <Videos id={movie.id} />}
+      {movie && movie.id && <SimilarMovies id={movie.id} />}
     </div>
   );
 }

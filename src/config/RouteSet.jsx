@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Catelog from '../pages/catelog/Catelog';
 import Detail from '../pages/detail/Detail';
