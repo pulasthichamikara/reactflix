@@ -3,10 +3,12 @@
 .button {
   cursor: pointer;
   font-family: $font-family;
-  border: 4px solid transparent;
+  border: 0.25rem solid transparent;
   padding: 0.5rem 1.8rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .btn-rounded {
@@ -17,7 +19,32 @@
   color: #fff;
   background-color: $main-color;
   transition: 0.5s ease;
+
   &:hover {
     background-color: darken($main-color, 20%);
+  }
+}
+.btn-box {
+  /*  box-shadow: 0 0 20px 5px darken($main-color, 20%); */
+
+  color: #fff;
+  background-color: $main-color;
+  border-radius: 4px;
+  transition: 0.5s ease;
+  &:hover {
+    box-shadow: 0 0 20px 5px darken($main-color, 20%);
+  }
+}
+.btn-border {
+  /*  box-shadow: 0 0 20px 5px darken($main-color, 20%); */
+
+  color: #fff;
+  background-color: transparent;
+  border-radius: 4px;
+  transition: 0.5s ease;
+  border-color: #fff;
+  &:hover {
+    //box-shadow: 0 0 20px 5px darken($main-color, 20%);
+    border-color: $main-color;
   }
 }

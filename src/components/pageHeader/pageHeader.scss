@@ -1,0 +1,10 @@
+@import '../../scss/index';
+
+.pageHeader {
+  min-height: 250px;
+  width: 100%;
+  @include mobile {
+    min-height: 180px;
+  }
+  @include flex(center, center);
+}

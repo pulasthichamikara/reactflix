@@ -4,12 +4,14 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { apiConfig } from '../../api/apiConfig';
-import tmdbApi from '../../api/tmdbApi';
+import tmdbApi, { movieType } from '../../api/tmdbApi';
 import '../button/button.scss';
+import Thumbnail from '../tumbnail/Thumbnail';
 import './movieList.scss';
 
 export default function MovieList({ type }) {
   let title = '';
+
   switch (type) {
     case 'popular':
       title = 'popular';
@@ -28,37 +30,45 @@ export default function MovieList({ type }) {
   }
 
   const [movielist, setMovieList] = useState([]);
+
   useEffect(() => {
-    const movies = async () => {
-      try {
-        const params = { page: 1 };
-        const response = await tmdbApi.getMovieList(type, params);
-        setMovieList(response.results);
-        console.log(response.results.slice(0, 10));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    movies();
+    if (type in movieType) {
+      const movies = async () => {
+        try {
+          const params = { page: 1 };
+          const response = await tmdbApi.getMovieList(type, params);
+          setMovieList(response.results);
+          console.log(response.results.slice(0, 10));
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      movies();
+    } else {
+      title = 'no data available';
+    }
   }, []);
 
   return (
     <div>
       <div className="container">
-        <h2>{title}</h2>
+        <div className="movielisr__header">
+          <h2>{title}</h2>
+          <Link to={type} className="button btn-border">
+            More {title} movies
+          </Link>
+        </div>
 
         <div className="movielist">
           <Swiper grabCursor={true} spaceBetween={20} slidesPerView={'auto'}>
             {movielist &&
               movielist.map((item) => (
                 <SwiperSlide key={item.id} className="movielist__item">
-                  <Link>
-                    <img
-                      src={`${apiConfig.w500Img(item.poster_path)}`}
-                      alt={item.title}
-                    />
-                    <p>{item.title}</p>
-                  </Link>
+                  <Thumbnail
+                    url={'/'}
+                    image={item.poster_path}
+                    title={item.title}
+                  />
                 </SwiperSlide>
               ))}
           </Swiper>
