@@ -32,6 +32,28 @@ export default function Catelog() {
     }
   }, [currentPge]);
 
+  useEffect(() => {
+    if (category in movieType) {
+      console.log(category);
+      console.log(movies);
+      const getMovies = async () => {
+        try {
+          const params = { page: 1 };
+          const response = await tmdbApi.getMovieList(category, params);
+          setMovies([...response.results]);
+          setTotalPages(response.total_pages);
+
+          console.log(movies);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getMovies();
+    } else {
+      navigate('/');
+    }
+  }, [category]);
+
   const loadMore = () => {
     setCurrentPage(currentPge + 1);
   };

@@ -8,6 +8,7 @@ import './mainslider.scss';
 import '../button/button.scss';
 import { apiConfig } from '../../api/apiConfig';
 import { Autoplay } from 'swiper';
+import { Link } from 'react-router-dom';
 
 export default function MainSlider() {
   const [movies, setMovies] = useState([]);
@@ -41,11 +42,16 @@ export default function MainSlider() {
               <h2 className="title">{item.title}</h2>
               <div className="overvie">{item.overview}</div>
               <div className="buttons">
-                <button className="button btn-rounded">Watch Trailar</button>
+                <Link to={`/movie/${item.id}`} className="button btn-rounded">
+                  See more{' '}
+                </Link>
               </div>
             </div>
             <div className="hero-slider__item__info__right">
-              <img src={`${apiConfig.w500Img(item.poster_path)}`} />
+              <img
+                src={`${apiConfig.w500Img(item.poster_path)}`}
+                alt={item.title}
+              />
             </div>
           </div>
         </div>

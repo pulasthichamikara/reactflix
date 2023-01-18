@@ -29,6 +29,11 @@ export default function Cast({ id }) {
               key={item.id + index}
               className="movielist__item"
               style={{ width: '150px' }}
+              lazy={true}
+              lazyLoading={{
+                loadPrevNext: true,
+                loadPrevNextAmount: 3,
+              }}
             >
               <div>
                 <ThumbnailCast
