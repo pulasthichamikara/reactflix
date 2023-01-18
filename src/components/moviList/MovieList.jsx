@@ -55,7 +55,7 @@ export default function MovieList({ type }) {
         <div className="movielisr__header">
           <h2>{title}</h2>
           <Link to={type} className="button btn-border">
-            More {title} movies
+            See More
           </Link>
         </div>
 
@@ -65,7 +65,7 @@ export default function MovieList({ type }) {
               movielist.map((item) => (
                 <SwiperSlide key={item.id} className="movielist__item">
                   <Thumbnail
-                    url={'/'}
+                    url={`/movie/${item.id}`}
                     image={item.poster_path}
                     title={item.title}
                   />

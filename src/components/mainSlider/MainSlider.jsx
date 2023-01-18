@@ -54,7 +54,7 @@ export default function MainSlider() {
   };
 
   return (
-    <div>
+    <div style={{ minHeight: '50vh' }}>
       <Swiper
         slidesPerView={1}
         modules={[Autoplay]}
@@ -62,7 +62,7 @@ export default function MainSlider() {
         spaceBetween={0}
         autoplay={{ delay: 5000 }}
       >
-        {movies.length &&
+        {movies.length > 0 &&
           movies.map((item) => (
             <SwiperSlide key={item.id}>{bgImg(item)}</SwiperSlide>
           ))}

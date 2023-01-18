@@ -1,5 +1,5 @@
 @import '../../scss/index';
-.hero-slider {
+.detail_hero-slider {
   &__item {
     background-size: cover !important;
     background-position: center center !important  ;
@@ -58,8 +58,8 @@
   }
 }
 
-.swiper-slide-active {
-  .hero-slider__item__info__right img {
+.detail_active {
+  .detail_hero-slider__item__info__right img {
     transform: scale(1);
   }
 }

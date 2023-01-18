@@ -9,7 +9,7 @@ export default function Catelog() {
   const { category } = useParams();
   const [movies, setMovies] = useState([]);
   const [currentPge, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function Catelog() {
             movies.map((item) => (
               <div key={item.id}>
                 <Thumbnail
-                  url={'/'}
+                  url={`/movie/${item.id}`}
                   image={item.poster_path}
                   title={item.title}
                 />
@@ -53,9 +53,11 @@ export default function Catelog() {
             ))}
         </div>
         <div className="grid-footer">
-          <button className="btn-box button" onClick={loadMore}>
-            Load more
-          </button>
+          {currentPge !== totalPages && (
+            <button className="btn-box button" onClick={loadMore}>
+              Load more
+            </button>
+          )}
         </div>
       </div>
     </div>
