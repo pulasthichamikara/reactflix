@@ -13,7 +13,7 @@ export default function MainSlider() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const movies = async () => {
+    const getMovies = async () => {
       try {
         const params = { page: 1 };
         const response = await tmdbApi.getMovieList('upcoming', params);
@@ -22,7 +22,7 @@ export default function MainSlider() {
         console.log(err);
       }
     };
-    movies();
+    getMovies();
   }, []);
 
   const bgImg = (item) => {

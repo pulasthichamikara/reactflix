@@ -25,7 +25,7 @@ export default function Header() {
     <div ref={headerRef} className="header">
       <div className="header__wrap container">
         <div className="logo">
-          <Link path={'/'}>Tmovies</Link>
+          <Link to="/">Tmovies</Link>
         </div>
         <ul className="header__nav">
           {headerNav.map((navItem, i) => (
