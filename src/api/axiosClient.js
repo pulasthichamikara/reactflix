@@ -7,7 +7,6 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use((config) => {
-  console.log('config', config);
   config.params = {
     ...config.params,
     api_key: apiConfig.apiKey,

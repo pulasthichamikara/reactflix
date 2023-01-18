@@ -7,56 +7,29 @@ import { apiConfig } from '../../api/apiConfig';
 import tmdbApi, { movieType } from '../../api/tmdbApi';
 import '../button/button.scss';
 import Thumbnail from '../tumbnail/Thumbnail';
-import './movieList.scss';
 
-export default function MovieList({ type }) {
-  let title = '';
-
-  switch (type) {
-    case 'popular':
-      title = 'popular';
-      break;
-    case 'top_rated':
-      title = 'Top rated';
-      break;
-    case 'upcoming':
-      title = 'Upcoming';
-      break;
-    case 'now_playing':
-      title = 'Now Playing';
-      break;
-    default:
-      title = 'popular';
-  }
-
+export default function SimilarMovies({ id }) {
   const [movielist, setMovieList] = useState([]);
 
   useEffect(() => {
-    if (type in movieType) {
-      const movies = async () => {
-        try {
-          const params = { page: 1 };
-          const response = await tmdbApi.getMovieList(type, params);
-          setMovieList(response.results);
-          console.log(response.results.slice(0, 10));
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      movies();
-    } else {
-      title = 'no data available';
-    }
+    const movies = async () => {
+      try {
+        const params = { page: 1 };
+        const response = await tmdbApi.similar(id);
+        setMovieList(response.results);
+        console.log(response.results);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    movies();
   }, []);
 
   return (
     <div>
       <div className="container">
         <div className="movielisr__header">
-          <h2>{title}</h2>
-          <Link to={type} className="button btn-border">
-            See More
-          </Link>
+          <h3>Similar movies</h3>
         </div>
 
         <div className="movielist">

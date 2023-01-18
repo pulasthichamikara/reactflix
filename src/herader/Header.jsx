@@ -5,8 +5,9 @@ export default function Header() {
   const headerRef = useRef(null);
   const headerNav = [
     { display: 'Home', path: '/' },
-    { display: 'Movies', path: '/movie' },
-    { display: 'TV series', path: '/tv' },
+    { display: 'Popular', path: '/popular' },
+    { display: 'Top rated', path: '/top_rated' },
+    { display: 'Upcoming', path: '/upcoming' },
   ];
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Header() {
         <ul className="header__nav">
           {headerNav.map((navItem, i) => (
             <li key={i}>
-              <Link path={navItem.path}>{navItem.display}</Link>
+              <Link to={navItem.path}>{navItem.display}</Link>
             </li>
           ))}
         </ul>
