@@ -2,11 +2,18 @@ import React, { lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { apiConfig } from '../../api/apiConfig';
 import './thumbnail.scss';
+import noimg from '../../images/noimg.png';
 
 export default function Thumbnail({ image, url, title }) {
+  let img = '';
+  if (image == null) {
+    img = noimg;
+  } else {
+    img = apiConfig.w500Img(image);
+  }
   return (
     <Link className="thumbnail" to={`${url}`}>
-      <img src={`${apiConfig.w500Img(image)}`} alt={title} loading="lazy" />
+      <img src={img} alt={title} loading="lazy" />
       <p>{title}</p>
     </Link>
   );

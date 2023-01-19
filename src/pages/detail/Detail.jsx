@@ -24,14 +24,14 @@ export default function Detail() {
       }
     };
     getMovie();
+    window.scrollTo(0, 0);
+    setActiveheader(0);
     setTimeout(() => {
       setActiveheader(1);
     }, 1000);
   }, [id]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div style={{ minHeight: '100vh' }}>

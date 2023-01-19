@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { apiConfig } from '../../api/apiConfig';
-import tmdbApi, { movieType } from '../../api/tmdbApi';
+import tmdbApi from '../../api/tmdbApi';
+import { v4 as uuidv4 } from 'uuid';
 import '../button/button.scss';
 import Thumbnail from '../tumbnail/Thumbnail';
 
@@ -14,16 +13,16 @@ export default function SimilarMovies({ id }) {
   useEffect(() => {
     const movies = async () => {
       try {
+        setMovieList([]);
         const params = { page: 1 };
         const response = await tmdbApi.similar(id);
         setMovieList(response.results);
-        console.log(response.results);
       } catch (err) {
         console.log(err);
       }
     };
     movies();
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -35,8 +34,8 @@ export default function SimilarMovies({ id }) {
         <div className="movielist">
           <Swiper grabCursor={true} spaceBetween={20} slidesPerView={'auto'}>
             {movielist &&
-              movielist.map((item) => (
-                <SwiperSlide key={item.id} className="movielist__item">
+              movielist.map((item, index) => (
+                <SwiperSlide key={uuidv4()} className="movielist__item">
                   <Thumbnail
                     url={`/movie/${item.id}`}
                     image={item.poster_path}

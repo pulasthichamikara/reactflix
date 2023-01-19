@@ -62,8 +62,8 @@ export default function MovieList({ type }) {
         <div className="movielist">
           <Swiper grabCursor={true} spaceBetween={20} slidesPerView={'auto'}>
             {movielist &&
-              movielist.map((item) => (
-                <SwiperSlide key={item.id} className="movielist__item">
+              movielist.map((item, index) => (
+                <SwiperSlide key={item.id + index} className="movielist__item">
                   <Thumbnail
                     url={`/movie/${item.id}`}
                     image={item.poster_path}

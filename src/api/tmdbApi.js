@@ -34,10 +34,7 @@ const tmdbApi = {
     const url = category[cate] + '/' + id + '/videos';
     return axiosClient.get(url, { params: {} });
   },
-  search: (cate, params) => {
-    const url = 'search' + category[cate];
-    return axiosClient.get(url, params);
-  },
+
   detail: (id) => {
     const url = 'movie/' + id;
     return axiosClient.get(url);
@@ -53,6 +50,10 @@ const tmdbApi = {
   similar: (id) => {
     const url = 'movie/' + id + '/similar';
     return axiosClient.get(url);
+  },
+  search: (params) => {
+    const url = '/search/movie/';
+    return axiosClient.get(url, { params });
   },
 };
 
