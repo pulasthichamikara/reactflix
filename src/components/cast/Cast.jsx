@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { v4 as uuidv4 } from 'uuid';
 import tmdbApi from '../../api/tmdbApi';
 import ThumbnailCast from '../tumbnail/ThumbnailCast';
 
 export default function Cast({ id }) {
   const [cast, setCast] = useState([]);
   useEffect(() => {
+    setCast([]);
     const movies = async () => {
       try {
         const response = await tmdbApi.cast(id);
@@ -26,7 +27,7 @@ export default function Cast({ id }) {
         {cast &&
           cast.map((item, index) => (
             <SwiperSlide
-              key={item.id + index}
+              key={uuidv4()}
               className="movielist__item"
               style={{ width: '150px' }}
               lazy={true}

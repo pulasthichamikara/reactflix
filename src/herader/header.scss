@@ -1,7 +1,15 @@
 @import '../scss/index';
 .logo {
-  font-size: 2.4rem;
-  font-weight: 600;
+  @include flex(center);
+  flex: 1;
+  a {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+  .search-box {
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
 }
 
 .header {
@@ -22,8 +30,8 @@
     width: 100%;
 
     @include mobile {
-      justify-content: center;
-      flex-direction: column;
+      /*       justify-content: center;
+      flex-direction: column; */
     }
   }
   &__nav {
@@ -66,4 +74,8 @@
       width: 100%;
     }
   }
+}
+
+.header__wrap {
+  position: relative;
 }

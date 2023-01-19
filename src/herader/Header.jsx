@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Search from '../components/search/Search';
 import './header.scss';
 export default function Header() {
   const headerRef = useRef(null);
@@ -27,7 +28,9 @@ export default function Header() {
       <div className="header__wrap container">
         <div className="logo">
           <Link to="/">Tmovies</Link>
+          <Search />
         </div>
+
         <ul className="header__nav">
           {headerNav.map((navItem, i) => (
             <li key={i}>
