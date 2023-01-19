@@ -1,0 +1,16 @@
+@import '../scss/index';
+
+.footer {
+  min-height: 250px;
+  width: 100%;
+
+  @include flex(center);
+  p {
+    flex: 1;
+  }
+  @include mobile {
+    min-height: 180px;
+    padding-bottom: 4rem;
+  }
+  @include flex(center, center);
+}
