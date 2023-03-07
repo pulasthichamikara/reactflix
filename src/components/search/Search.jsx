@@ -16,17 +16,16 @@ export default function Search() {
     setSearch(e.target.value);
   };
 
-  useEffect(() => {}, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const getMovie = async () => {
       try {
         const query = { query: search, per_page: 5 };
+        console.log(query);
         const response = await tmdbApi.search(query);
         setMovies(response);
       } catch (err) {
-        console.log(err);
+        console.log('err', err);
       }
     };
     console.log(movies);

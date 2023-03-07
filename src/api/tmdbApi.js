@@ -1,6 +1,3 @@
-import axios from 'axios';
-import queryString from 'query-string';
-import { apiConfig } from './apiConfig';
 import axiosClient from './axiosClient';
 
 export const category = {
@@ -52,7 +49,7 @@ const tmdbApi = {
     return axiosClient.get(url);
   },
   search: (params) => {
-    const url = '/search/movie/';
+    const url = '/search/movie';
     return axiosClient.get(url, { params });
   },
 };

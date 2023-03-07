@@ -14,7 +14,7 @@ export default function Thumbnail({ image, url, title }) {
   return (
     <Link className="thumbnail" to={`${url}`}>
       <img src={img} alt={title} loading="lazy" />
-      <p>{title}</p>
+      <p className="text-white ">{title}</p>
     </Link>
   );
 }
