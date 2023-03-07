@@ -49,7 +49,7 @@ const tmdbApi = {
     return axiosClient.get(url);
   },
   search: (params) => {
-    const url = '/search/movie/';
+    const url = '/search/movie';
     return axiosClient.get(url, { params });
   },
 };
